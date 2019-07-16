@@ -1,0 +1,21 @@
+\tdplotsetmaincoords{60}{105}
+%
+\pgfmathsetmacro{\rvec}{.9}
+\pgfmathsetmacro{\thetavec}{55}
+\pgfmathsetmacro{\phivec}{65}
+%
+\begin{tikzpicture}[scale=5,tdplot_main_coords]
+    \coordinate (O) at (0,0,0);
+    \draw[->] (0,0,0) -- (.5,0,0) node[anchor=north east]{$x$};
+    \draw[->] (0,0,0) -- (0,.75,0) node[anchor=north west]{$y$};
+\draw[->] (0,0,0) -- (0,0,.5) node[anchor=south]{$z$};
+    \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+    \draw[-stealth,color=black] (O) -- (P) node[above right] {$\rho$};
+    \draw[dashed, color=black] (O) -- (Pxy);
+    \draw[dashed, color=black] (P) -- (Pxy);
+    \tdplotdrawarc{(O)}{0.25}{0}{\phivec}{anchor=north}{$\theta$}
+    \tdplotsetthetaplanecoords{\phivec}
+    \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.375}{0}%
+        {\thetavec}{anchor=south west}{$\phi$}
+
+\end{tikzpicture}

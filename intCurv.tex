@@ -1,0 +1,16 @@
+\[C: \Vec{r}=\Vec{\phi}(t) \mid\quad t_A\leq t \leq t_B\]
+\begin{tabular}{ll}
+    Élément de masse & $dm = f(x,y,z) \,ds, f$ en $kg/m$ \\
+    Masse totale & $M = \int_C f(x,y,z)\,ds$\\
+    Centre de masse & \(\begin{bmatrix*}[l] \Bar{x}\\ \Bar{y} \\ \Bar{z}\end{bmatrix*} = \frac{1}{M}\int_C\begin{bmatrix*}[l] x\\ y \\z \end{bmatrix*} f(x,y,z)\,ds \)
+\end{tabular}
+
+\begin{equation*}
+    \begin{matrix*}
+    x = \phi_1(t) & y=\phi_2(t) & z=\phi_3(t)\\
+    dx = \phi_1^{\prime}(t) & dy = \phi_2^{\prime}(t) & dz = \phi_3^{\prime}(t)
+    \end{matrix*}
+\end{equation*}
+\[ ds = \sqrt{(dx)^2+ (dy)^2 + (dz)^2}\,dt \]
+\subsubsection{Par substitution}
+\[ \int_C f(x,y,z)\,ds = \int_{t_A}^{t_B}f\qty(\phi_1(t),\phi_2(t),\phi_3(t))\,ds \]

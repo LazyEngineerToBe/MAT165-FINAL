@@ -1,0 +1,63 @@
+\section{Matrices}
+\subsection{Opérations sur les matrices}
+\begin{tabular}{ll}
+    Multiplication ligne par colonne & \(A\vdot X = B\) \\
+    Addition & $A+B= (a_{i,j}+ b_{i,j})$\\
+    Multiplication par un scalaire & $ \lambda \,A = (\lambda\, a_{i,j})$\\
+    Inversion & $A^{-1}$
+\end{tabular}
+
+\subsection{Matrices carrées}
+\subsubsection{Déterminant}
+\[\mathbf{det}([\dots])\]
+Une matrice $A$ est inversible seulement si $\mathbf{det}(A)\neq 0$
+
+\subsection{Résolution d'un système linéaire}
+% \subsubsection{Méthode de Cramer}
+% \begin{align*}
+%     AX &= B\\
+%     A^{-1}AX &= A^{-1}B\\
+%     I_n X &= A^{-1}B\\
+%     X &= A^{-1}B
+% \end{align*}
+
+\subsubsection{Méthode de Gauss-Jordan}
+\begin{enumerate}[nosep]
+    \item Augmenter la matrice $A$ par $B$
+    \item Appliquer Gauss-Jordan
+    \item Écrire le système linéraire
+    \item Écrire sous forme paramétrique scalaire
+    \item Écrire forme vectorielle matricielle
+\end{enumerate}
+\begin{tabular}{ll}
+    Gauss-Jordan & $\mathbf{rref}(A)$ \\ 
+    Ajoute mat. colonne $B$ à la mat. $A$ & $\mathbf{augment}(A,B) $ 
+\end{tabular}
+\subsubsection{Système linéaire $\Longleftrightarrow$ Forme paramétrique scalaire}
+\begin{equation*}
+    \left\{
+    \begin{matrix*}[l]
+    x_1 + \lambda x_n = C_1 \\
+    x_2 + \lambda x_n = C_2\\
+    \end{matrix*}
+    \right.
+    \Longleftrightarrow
+    \left\{
+    \begin{matrix*}[l]
+    x_1 = C_1 + \lambda t_1 \\
+    x_2 = C_2 + \lambda t_1\\
+    x_n = C_n + \lambda t_1
+    \end{matrix*}
+    \right.
+\end{equation*}
+
+\subsubsection{Forme vectorielle (matricielle)}
+\begin{equation*}
+    \begin{bmatrix*}[c]
+        x_1\\ x_2 \\ x_n
+    \end{bmatrix*}
+    =
+    \begin{bmatrix*}[c]
+        C_1\\ C_2 \\ C_n
+    \end{bmatrix*}+ t_1 \Bigg[\vdots\Bigg] + t_2 \Bigg[\vdots\Bigg]
+\end{equation*}

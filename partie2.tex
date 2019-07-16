@@ -1,0 +1,133 @@
+% \section{Système de coordonées}
+% \subsection{Plan 2D}
+% \subsubsection{Cartésienne $(x,y) \Longleftrightarrow$ Polaire $(r,\theta)$}
+% \input{coordPolaires.tex}
+
+% \subsection{Espace 3D}
+% \subsubsection{Cartésienne $(x,y,z) \Longleftrightarrow$ Cylindrique $(r,\theta,z)$}
+% \input{coordCyl.tex}
+
+% \subsubsection{Sphérique $(\rho,\theta,\phi)$}
+% \input{coordSpherique.tex}
+
+\input{sysCoord.tex}
+
+\section{Intégrales multiples}
+\subsection{Intégrales doubles}
+\input{intDoubles.tex}
+
+\subsection{Intégrales triples}
+\input{intTriples.tex}
+
+\section{Intégrales curvilignes}
+\input{intCurv.tex}
+
+\section{Champs vectoriels}
+\begin{tabular}{ll}
+    2D &  $\Vec{F}(x,y)= P(x,y)\,\Vec{i}+Q(x,y)\,\Vec{j}$\\ %$\Vec{F}: \mathbb{R}^2 \rightarrow \mathbb{R}^2$\\
+    3D &  $\Vec{F}(x,y,z)= P(x,y,z)\,\Vec{i}+Q(x,y,z)\,\Vec{j}+R(x,y,z)\,\Vec{k}$
+\end{tabular}
+
+
+\subsection{Cas particulier}
+\begin{tabular}{lll}
+2D & Courbe de niveau & \( x^2+y^2=R^2\) \\
+2D & Surface de niveau & \( x^2+y^2+z^2=R^2\)
+\end{tabular}
+
+\subsection{Champs vectoriels conservatifs}
+\subsubsection{Démarche}
+\begin{enumerate}[nosep]
+    \item Vérifier que $\va{F}$ est conservatif
+    \item Déterminer une fonction de potentiel
+    \item Calculer à l'aide du T.F.C
+\end{enumerate}
+
+\subsubsection{bidimensionnels}
+Si \(\va{F}=P\,\va{i}+Q\,\va{j}\) est conservatif, il existe $\mathbf{f}$ t.q. \(\grad{\va{f}}=\va{F}\).
+\\Condition: 
+\[ \bigg\{ \partial P/\partial y = \partial Q/\partial x \]
+\begin{equation*}
+\grad{\va{f}}=\va{F}\Longleftrightarrow 
+    \left\{
+    \begin{matrix*}[l]
+        \partial f/\partial x = P \\
+        \partial f/\partial y = Q
+    \end{matrix*}
+    \right.
+    \Longleftrightarrow
+    \left\{
+    \begin{matrix*}[l]
+        f(x,y) = \int P\,dx +C_1(y) \\
+        f(x,y) = \int Q\,dy +C_2(x)
+    \end{matrix*}
+    \right.
+\end{equation*}
+On conserve les termes non répétitifs $+C$.
+
+\subsubsection{tridimensionnels}
+Si \(\va{F}=P\,\va{i}+Q\,\va{j}+R\,\va{k}\) est conservatif, il existe $\mathbf{f}$ t.q. \(\grad{\va{f}}=\va{F}\).
+Condition:
+\begin{equation*}
+        \left\{
+    \begin{matrix*}[l]
+        \partial P/\partial y = \partial Q/\partial x\\
+        \partial P/\partial z = \partial R/\partial x\\
+        \partial Q/\partial z = \partial R/\partial y
+    \end{matrix*}
+    \right.
+\end{equation*}
+\begin{equation*}
+\grad{\va{f}}=\va{F}\Longleftrightarrow 
+    \left\{
+    \begin{matrix*}[l]
+        \partial f/\partial x = P \\
+        \partial f/\partial y = Q \\
+        \partial f/\partial z = R
+    \end{matrix*}
+    \Longrightarrow
+    \right.
+    \left\{
+    \begin{matrix*}[l]
+        f= \int P\,dx +C_1(y,z) \\
+        f= \int Q\,dy +C_2(x,z)\\
+        f= \int R\,dz +C_3(x,y)
+    \end{matrix*}
+    \right.
+\end{equation*}
+On conserve les termes non répétitifs $+C$.
+
+\subsubsection{Remarques}
+\begin{enumerate}
+    \item Si $\va{F}=\grad{\va{f}}$ alors, la circulation ne dépend pas du chemin suivi, elle ne dépend que de $A$ et $B$. (T.F.C.)
+    \[ \int_A^B \va{F}\vdot\,d\va{r} = f(B) - f(A) \;\mid A(a_x,a_y),B(b_x,b_y)\]
+    \item La circulation le long d'un chemin fermé est nulle.
+    \[\oint_C \grad{\va{f}}\vdot\,d\va{r}=0\]
+\end{enumerate}
+
+
+\subsection{Théorème de Green}
+\[ Aire(D) = \oint_C P\,dx + Q\,dy = \iint_D\qty(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}) \,dA \]
+Aire d'une région polaire:
+\[ Aire(D) = \frac{1}{2}\oint_C r^2 \,d\theta\]
+
+\section{Applications}
+\input{applications.tex}
+
+\input{matrices.tex}
+
+\section*{Cercle trigonométrique}
+\centering
+\input{fig/cercleTrig.tex}
+
+\section*{Élément de volume cylindrique}
+\resizebox{!}{0.35\textwidth}{
+\input{fig/coordCylTikz.tex}
+}
+
+\section*{Coord. Sphériques}
+\resizebox{!}{0.25\textwidth}{
+\input{fig/coordSpherique.tex}
+}
+
+\includepdf[pages=-]{formulaire-algebre-trigo.pdf}

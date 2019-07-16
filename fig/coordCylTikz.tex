@@ -1,0 +1,92 @@
+% \documentclass{article}
+% \usepackage{amsmath}
+% \usepackage{tikz}   
+% \usepackage{tikz-3dplot}
+%  \usepackage[active,tightpage]{preview}
+%  \PreviewEnvironment{tikzpicture}
+%   \setlength\PreviewBorder{2mm}
+
+% \newcommand{\diff}{\mathop{}\mathopen{}\mathrm{d}}
+% \newcommand{\dtheta}{\diff \theta}
+% \newcommand{\dz}{\diff z}
+% \newcommand{\dr}{\diff r}
+
+% \newcommand{\ptcyl}[3]{{#1*cos(#2)},{#1*sin(#2)},{#3}}
+
+% \begin{document}
+
+\tdplotsetmaincoords{60}{105}
+
+\begin{tikzpicture}[scale=5,tdplot_main_coords,>=stealth]
+
+% dessin des axes
+\draw[thick,->] (0,0,0) -- (.5,0,0) node[anchor=north east]{$x$};
+\draw[thick,->] (0,0,0) -- (0,.8,0) node[anchor=north west]{$y$};
+\draw[thick,->] (0,0,0) -- (0,0,.65) node[anchor=south]{$z$};
+
+% coordonnées des points
+  % origine
+    \coordinate (O) at (0,0,0);
+  % points du "cube"
+    \coordinate (A) at (\ptcyl{0.6}{55}{0.4});
+    \coordinate (B) at (\ptcyl{0.8}{55}{0.4});
+    \coordinate (C) at (\ptcyl{0.8}{70}{0.4});
+    \coordinate (D) at (\ptcyl{0.6}{70}{0.4});
+    \coordinate (E) at (\ptcyl{0.6}{55}{0.6});
+    \coordinate (F) at (\ptcyl{0.8}{55}{0.6});
+    \coordinate (G) at (\ptcyl{0.8}{70}{0.6});
+    \coordinate (H) at (\ptcyl{0.6}{70}{0.6});
+  % projetés des points A, B et C
+    \coordinate (I) at (\ptcyl{0.6}{55}{0});
+    \coordinate (J) at (\ptcyl{0.8}{55}{0});
+    \coordinate (K) at (\ptcyl{0.8}{70}{0});
+
+% dessin du cube
+  \draw [black,thick] (A) -- (E) -- (F) -- (B) -- (A) ;
+  \draw [black,thick] (H) -- (G) -- (C) ;
+  \draw [black,thick,dashed] (H) -- (D) -- (C) ;
+  % dessin des arcs de cercle
+    % dessin des arcs du bas
+    \coordinate (M) at (0,0,0.4) ;
+    \tdplotsetrotatedcoordsorigin{(M)}
+    \tdplotdrawarc[tdplot_rotated_coords,thick,dashed,black]{(M)}{0.6}{55}{70}{}{}
+    \tdplotdrawarc[tdplot_rotated_coords,thick,black]{(M)}{0.8}{55}{70}{}{}
+    % dessin des arcs du haut
+      \coordinate (N) at (0,0,0.6) ;
+      \tdplotsetrotatedcoordsorigin{(N)}
+      \tdplotdrawarc[tdplot_rotated_coords,thick,black]{(N)}{0.6}{55}{70}{}{}
+      \tdplotdrawarc[tdplot_rotated_coords,thick,black]{(N)}{0.8}{55}{70}{}{}
+
+% dessin des arcs dans le plan (Oxy)
+  \tdplotsetrotatedcoordsorigin{(O)}
+  \tdplotdrawarc[tdplot_rotated_coords,dashed,black]{(O)}{0.6}{55}{70}{}{}
+  \tdplotdrawarc[tdplot_rotated_coords,dashed,black]{(O)}{0.8}{55}{70}{}{}
+  \tdplotdrawarc[tdplot_rotated_coords,black,->]{(O)}{0.18}{0}{55}{anchor=north}{$\theta$};
+  \tdplotdrawarc[tdplot_rotated_coords,black,->]{(O)}{0.4}{55}{70}{}{};
+  \draw (0.21,0.4,0) node [black,scale=0.8] {$\dtheta$};
+
+% dessin de quelques segments (plan xOy, projection des points A B et C)
+  \draw [black,dashed] (O) -- (J) ;
+  \draw [black,dashed] (O) -- (K) ;
+  \draw [black,dashed] (A) -- (I) ;
+  \draw [black,dashed] (B) -- (J) ;
+  \draw [black,dashed] (C) -- (K) ;
+  \draw [black,dashed] (A) -- (M) -- (D) ;
+  \draw [black,dashed] (E) -- (N) -- (H) ;
+
+% points M et M'
+% \draw [black] (A) node {\textbullet} node [below left] {$M$};
+% \draw [black] (G) node {\textbullet} node [above right] {$M'$};
+
+% légende
+% \draw (0,0,0.7) node [left,black] {$\dz$} ;
+\draw (\ptcyl{0.5}{45}{0}) node [black] {$r$} ;
+%\draw (\ptcyl{0.7}{50}{0}) node [black] {$\dr$} ;
+\draw (\ptcyl{0.8}{70}{0.25}) node [black,left] {$z$} ;
+\draw [thick,black,<-] (\ptcyl{0.8}{70}{0.5}) to [bend left] (\ptcyl{1}{70}{0.45}) node [below] {$\dz$};
+\draw [thick,black,<-] (\ptcyl{0.7}{70}{0.6}) to [bend left] (\ptcyl{0.7}{90}{0.65}) node [right] {$\dr$};
+\draw [thick,black,<-] (\ptcyl{0.6}{62.5}{0.6}) to [bend left] (\ptcyl{0.55}{90}{0.7}) node [right] {$r\!\dtheta$};
+
+\end{tikzpicture}
+
+% \end{document}
